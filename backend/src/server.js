@@ -104,6 +104,5 @@ if (process.env.NODE_ENV === 'production') {
 
 app.listen(port,()=>{
     console.log(`Server listening at port ${port}`);
-    console.log("ENV:", process.env);
     connectdb();
 })
