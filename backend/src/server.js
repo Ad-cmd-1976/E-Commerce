@@ -2,8 +2,8 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import path from 'path';
-import authRoutes from './routes/auth.route.js';
-// import productRoutes from './routes/product.route.js';
+// import authRoutes from './routes/auth.route.js';
+import productRoutes from './routes/product.route.js';
 import cartRoutes from './routes/cart.route.js';
 import couponRoutes from './routes/coupon.route.js';
 import paymentRoutes  from './routes/payment.route.js'
@@ -24,21 +24,21 @@ app.use(cors({
 app.use(express.json({limit:"10mb"}));
 app.use(cookieParser());
 
-try{
-    console.log("Mounting /api/auth...");
-    app.use('/api/auth', authRoutes);
-}
-catch(error){
-    console.log("Failed to register auth routes",error.message);
-}
-
 // try{
-//     console.log("Mounting /api/product...");
-//     app.use('/api/product', productRoutes);
+//     console.log("Mounting /api/auth...");
+//     app.use('/api/auth', authRoutes);
 // }
 // catch(error){
-//     console.log("Failed to register product routes",error.message);
+//     console.log("Failed to register auth routes",error.message);
 // }
+
+try{
+    console.log("Mounting /api/product...");
+    app.use('/api/product', productRoutes);
+}
+catch(error){
+    console.log("Failed to register product routes",error.message);
+}
 
 try{
     console.log("Mounting /api/cart...");
