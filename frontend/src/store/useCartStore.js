@@ -13,7 +13,6 @@ export const useCartStore=create((set,get)=>({
     getCartItems:async ()=>{
         try{
             const res=await axios.get("/cart");
-            console.log(res);
             set({cart:res.data});
             get().calculateTotals();
         }

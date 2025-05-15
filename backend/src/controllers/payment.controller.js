@@ -5,6 +5,8 @@ import dotenv from 'dotenv'
 
 dotenv.config();
 
+const BASE_URI=(process.env.NODE_ENV==="development")?"http://localhost:5173":"";
+
 export const createCheckoutSession=async (req,res)=>{
     try{
         const {products,couponCode}=req.body;
@@ -16,7 +18,7 @@ export const createCheckoutSession=async (req,res)=>{
         let totalAmount=0;
         
         const lineItems=products.map((product)=>{
-            const amount=Math.round(product.price*100); //convert to cents
+            const amount=Math.round(product.price*100); 
             totalAmount+=(amount*product.quantity);
             
             return {
@@ -45,8 +47,8 @@ export const createCheckoutSession=async (req,res)=>{
             payment_method_types:["card",],
             line_items:lineItems,
             mode:"payment",
-            success_url:`${process.env.CLIENT_URL}/purchase-success?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url:`${process.env.CLIENT_URL}/purchase-cancel`,
+            success_url:`${BASE_URI}/purchase-success?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url:`${BASE_URI}/purchase-cancel`,
             discounts:coupon ? [ { coupon: await createStripeCoupon(coupon.discountPercentage), }, ] : [],
             metadata:{
                 userId:req.user._id.toString(),
