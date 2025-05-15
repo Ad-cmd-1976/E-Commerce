@@ -16,7 +16,8 @@ dotenv.config();
 
 const app=express();
 const port=process.env.PORT;
-const __dirname=path.resolve();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.use(cors({
     origin:"http://localhost:5173",
@@ -75,13 +76,9 @@ catch(error){
 
 
 if (process.env.NODE_ENV === 'production') {
+  const distPath = path.resolve(__dirname, '../../frontend/dist');
 
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = path.dirname(__filename);
-
-  const distPath = path.resolve(__dirname, '../frontend/dist');
-
-  console.log("✅ Serving frontend from:", distPath);
+  console.log('✅ Serving frontend from:', distPath);
 
   app.use(express.static(distPath));
 
