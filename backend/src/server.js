@@ -73,13 +73,16 @@ catch(error){
 }
 
 
-// if(process.env.NODE_ENV==="production"){
-//     app.use(express.static(path.join(__dirname,"../frontend/dist")));
+if (process.env.NODE_ENV === 'production') {
+  const distPath = path.resolve(__dirname, '../frontend/dist');
 
-//     app.get("*",(req,res)=>{
-//         res.sendFile(path.join(__dirname,"../frontend","dist","index.html"));
-//     })
-// }
+  app.use(express.static(distPath));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(distPath, 'index.html'));
+  });
+}
+
 
 app.listen(port,()=>{
     console.log(`Server listening at port ${port}`);
