@@ -6,8 +6,8 @@ import authRoutes from './routes/auth.route.js';
 import productRoutes from './routes/product.route.js';
 import cartRoutes from './routes/cart.route.js';
 import couponRoutes from './routes/coupon.route.js';
-import paymentRoutes  from './routes/payment.route.js'
-// import analyticsRoutes  from './routes/analytics.route.js';
+// import paymentRoutes  from './routes/payment.route.js'
+import analyticsRoutes  from './routes/analytics.route.js';
 import cookieParser from 'cookie-parser';
 import { connectdb } from './lib/db.js';
 
@@ -24,13 +24,53 @@ app.use(cors({
 app.use(express.json({limit:"10mb"}));
 app.use(cookieParser());
 
+try{
+    console.log("Mounting /api/auth...");
+    app.use('/api/auth', authRoutes);
+}
+catch(error){
+    console.log("Failed to register auth routes",error.message);
+}
 
-app.use('/api/auth', authRoutes);
-app.use('/api/product', productRoutes);
-app.use('/api/cart', cartRoutes);
-app.use('/api/coupons', couponRoutes);
-app.use('/api/payments', paymentRoutes);
-// app.use('/api/analytics', analyticsRoutes);
+try{
+    console.log("Mounting /api/product...");
+    app.use('/api/product', productRoutes);
+}
+catch(error){
+    console.log("Failed to register product routes",error.message);
+}
+
+try{
+    console.log("Mounting /api/cart...");
+    app.use('/api/cart', cartRoutes);
+}
+catch(error){
+    console.log("Failed to register cart routes",error.message);
+}
+
+try{
+    console.log("Mounting /api/coupons...");
+    app.use('/api/coupons', couponRoutes);
+}
+catch(error){
+    console.log("Failed to register coupons routes",error.message);
+}
+
+// try{
+//     console.log("Mounting /api/payments...");
+//     app.use('/api/payments', paymentRoutes);
+// }
+// catch(error){
+//     console.log("Failed to register payment routes",error.message);
+// }
+
+try{
+    console.log("Mounting /api/analytics...");
+    app.use('/api/analytics', analyticsRoutes);
+}
+catch(error){
+    console.log("Failed to register analytics routes",error.message);
+}
 
 
 if(process.env.NODE_ENV==="production"){
