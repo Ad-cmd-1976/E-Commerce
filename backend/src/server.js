@@ -5,8 +5,8 @@ import path from 'path';
 import authRoutes from './routes/auth.route.js';
 import productRoutes from './routes/product.route.js';
 import cartRoutes from './routes/cart.route.js';
-import couponRoutes from './routes/coupon.route.js';
-// import paymentRoutes  from './routes/payment.route.js'
+// import couponRoutes from './routes/coupon.route.js';
+import paymentRoutes  from './routes/payment.route.js'
 import analyticsRoutes  from './routes/analytics.route.js';
 import cookieParser from 'cookie-parser';
 import { connectdb } from './lib/db.js';
@@ -48,21 +48,21 @@ catch(error){
     console.log("Failed to register cart routes",error.message);
 }
 
-try{
-    console.log("Mounting /api/coupons...");
-    app.use('/api/coupons', couponRoutes);
-}
-catch(error){
-    console.log("Failed to register coupons routes",error.message);
-}
-
 // try{
-//     console.log("Mounting /api/payments...");
-//     app.use('/api/payments', paymentRoutes);
+//     console.log("Mounting /api/coupons...");
+//     app.use('/api/coupons', couponRoutes);
 // }
 // catch(error){
-//     console.log("Failed to register payment routes",error.message);
+//     console.log("Failed to register coupons routes",error.message);
 // }
+
+try{
+    console.log("Mounting /api/payments...");
+    app.use('/api/payments', paymentRoutes);
+}
+catch(error){
+    console.log("Failed to register payment routes",error.message);
+}
 
 try{
     console.log("Mounting /api/analytics...");
