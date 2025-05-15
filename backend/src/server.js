@@ -15,6 +15,18 @@ import { fileURLToPath } from 'url';
 dotenv.config();
 
 const app=express();
+
+const originalAppUse = app.use.bind(app);
+app.use = function(path, ...handlers) {
+  if (typeof path === 'string' && path.startsWith('http')) {
+    console.error('🚨 INVALID ROUTE PATH passed to app.use():', path);
+  } else if (typeof path === 'string') {
+    console.log('📍 app.use path registered:', path);
+  }
+  return originalAppUse(path, ...handlers);
+};
+
+
 const port=process.env.PORT;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
