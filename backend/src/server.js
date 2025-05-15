@@ -10,6 +10,7 @@ import paymentRoutes  from './routes/payment.route.js'
 import analyticsRoutes  from './routes/analytics.route.js';
 import cookieParser from 'cookie-parser';
 import { connectdb } from './lib/db.js';
+import { fileURLToPath } from 'url';
 
 dotenv.config();
 
@@ -74,14 +75,21 @@ catch(error){
 
 
 if (process.env.NODE_ENV === 'production') {
+
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+
   const distPath = path.resolve(__dirname, '../frontend/dist');
+
+  console.log("✅ Serving frontend from:", distPath);
 
   app.use(express.static(distPath));
 
   app.get('*', (req, res) => {
-    res.sendFile(path.join(distPath, 'index.html'));
+    res.sendFile(path.resolve(distPath, 'index.html'));
   });
 }
+
 
 
 app.listen(port,()=>{
