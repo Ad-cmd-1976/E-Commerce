@@ -49,25 +49,27 @@ git clone https://github.com/Ad-cmd-1976/E-Commerce.git
 cd E-Commerce
 
 # 3. Create a .env file in the root directory.
-    You will need to add the following environment variables to this file:
+    # You will need to add the following environment variables to this file:
 
-    PORT=8080
-    MONGO_URI=your_mongodb_uri
+        PORT=8080
+        MONGO_URI=your_mongodb_uri
 
-    UPSTASH_REDIS_URI=your_upstadsh_redis_uri
+        UPSTASH_REDIS_URI=your_upstadsh_redis_uri
 
-    ACCESS_TOKEN_SECRET=your_access_token_secret
-    REFRESH_TOKEN_SECRET=your_refresh_token_secret
+        ACCESS_TOKEN_SECRET=your_access_token_secret
+        REFRESH_TOKEN_SECRET=your_refresh_token_secret
 
-    CLOUDINARY_CLOUD_NAME=your_cloudinary_name
-    CLOUDINARY_API_KEY=your_cloudinary_api
-    CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+        CLOUDINARY_CLOUD_NAME=your_cloudinary_name
+        CLOUDINARY_API_KEY=your_cloudinary_api
+        CLOUDINARY_API_SECRET=your_cloudinary_api_secret
 
-    STRIPE_SECRET_KEY=your_stripe_secret_key
+        STRIPE_SECRET_KEY=your_stripe_secret_key
+        NODE_ENV=production
 
 # 4. Run the application
     #  Build Command
         npm run build
     #  Start the application
         npm run start
+# 5. Access the application at localhost:8080
 ```
