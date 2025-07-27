@@ -43,29 +43,31 @@ To get this project up and running on your local machine, follow these steps:
 
 ```sh
 # 1. Clone the repository into your desired directory
-git clone [https://github.com/Ad-cmd-1976/E-Commerce.git](https://github.com/Ad-cmd-1976/E-Commerce.git)
+git clone https://github.com/Ad-cmd-1976/E-Commerce.git
 
 # 2. Navigate into the project's root folder
 cd E-Commerce
 
-# 3. Install the necessary dependencies for the backend server
-npm install
+# 3. Create a .env file in the root directory.
+    You will need to add the following environment variables to this file:
 
-# 4. Navigate into the frontend folder to install its dependencies
-cd frontend
-npm install
+    PORT=8080
+    MONGO_URI=your_mongodb_uri
 
-# 5. Return to the root directory
-cd ..
+    UPSTASH_REDIS_URI=your_upstadsh_redis_uri
 
-# 6. Create a .env file in the root directory.
-#    You will need to add the following environment variables to this file:
-#
-#    PORT=8000
-#    MONGO_URI=your_mongodb_connection_string
-#    JWT_SECRET=your_jwt_secret
-#    STRIPE_SECRET_KEY=your_stripe_secret_key
+    ACCESS_TOKEN_SECRET=your_access_token_secret
+    REFRESH_TOKEN_SECRET=your_refresh_token_secret
+
+    CLOUDINARY_CLOUD_NAME=your_cloudinary_name
+    CLOUDINARY_API_KEY=your_cloudinary_api
+    CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+
+    STRIPE_SECRET_KEY=your_stripe_secret_key
 
 # 7. Run the application
-#    This will start both the frontend and backend servers concurrently.
-npm run dev
+    #  Build Command
+        npm run build
+    #  Start the application
+        npm run start
+```
