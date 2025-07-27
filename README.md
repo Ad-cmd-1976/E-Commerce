@@ -11,7 +11,7 @@
 
 This is a full-stack e-commerce platform built with the MERN stack. It features a rich user interface, secure payment processing, and an admin-facing dashboard for analytics, providing a complete shopping experience.
 
-![Project Screenshot](https://user-images.githubusercontent.com/26179770/129486337-75b31c44-53c4-4899-8239-254396973295.png)
+![Project Screenshot](https://github.com/user-attachments/assets/b552102e-c513-4c35-b978-c4fb92a87bc7)
 
 ---
 
@@ -39,9 +39,33 @@ This is a full-stack e-commerce platform built with the MERN stack. It features 
 
 ## ⚙️ Setup and Installation
 
-To run this project locally, follow these steps:
+To get this project up and running on your local machine, follow these steps:
 
-1. **Clone the repository:**
-   ```sh
-   git clone [https://github.com/Ad-cmd-1976/E-Commerce.git](https://github.com/Ad-cmd-1976/E-Commerce.git)
-   cd E-Commerce
+```sh
+# 1. Clone the repository into your desired directory
+git clone [https://github.com/Ad-cmd-1976/E-Commerce.git](https://github.com/Ad-cmd-1976/E-Commerce.git)
+
+# 2. Navigate into the project's root folder
+cd E-Commerce
+
+# 3. Install the necessary dependencies for the backend server
+npm install
+
+# 4. Navigate into the frontend folder to install its dependencies
+cd frontend
+npm install
+
+# 5. Return to the root directory
+cd ..
+
+# 6. Create a .env file in the root directory.
+#    You will need to add the following environment variables to this file:
+#
+#    PORT=8000
+#    MONGO_URI=your_mongodb_connection_string
+#    JWT_SECRET=your_jwt_secret
+#    STRIPE_SECRET_KEY=your_stripe_secret_key
+
+# 7. Run the application
+#    This will start both the frontend and backend servers concurrently.
+npm run dev
