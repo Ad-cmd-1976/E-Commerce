@@ -65,7 +65,7 @@ cd E-Commerce
 
     STRIPE_SECRET_KEY=your_stripe_secret_key
 
-# 7. Run the application
+# 4. Run the application
     #  Build Command
         npm run build
     #  Start the application
